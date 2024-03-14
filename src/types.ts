@@ -8,3 +8,10 @@ export type CountryData = {
     phoneNumberLengthByCountry_phLength_NationalPrefix: number | null;
     phoneNumberLengthByCountry_Notes: string | null;
 }
+
+export type NumberValidationData = {
+    country: string;
+    phLengthMax: number |null;
+    phLengthMin: number | null;
+    phExample?: string | number;
+}
