@@ -9,9 +9,22 @@ export type CountryData = {
     phoneNumberLengthByCountry_Notes: string | null;
 }
 
+export type requestParams = {
+    countryCode: number | string;
+    mobileNumber?: string;
+    internationalValidation?: boolean;
+}
+
 export type NumberValidationData = {
     country: string;
     phLengthMax: number |null;
     phLengthMin: number | null;
     phExample?: string | number;
+    validNumber?: string | null;
+}
+
+export type CommonApiReturnType<T> = {
+    IsError: boolean;
+    Message: string | null;
+    ReturnObj : T | null;
 }

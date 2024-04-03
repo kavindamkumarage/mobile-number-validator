@@ -21,19 +21,30 @@ const { getCountryDataByCode } = require('my-country-data-library');
 
 // React usage
 import { getCountryDataByCode } from '@zene/mobile-number-validator';
+```
+```javascript
 
-    // Example usage:
-    const countryCode = 1; // United States
-    const countryData = getCountryDataByCode(countryCode);
+// Example usage:
+    const params = {
+        countryCode: string,
+        mobileNumber?: string,
+        internationalValidation?: boolean
+    }
+    const countryData = getCountryDataByCode(params);
     console.log(countryData);
 ```
 
 ```javascript
 {
-  country: 'United States',
-  phLengthMax: 10,
-  phLengthMin: 10,
-  phExample: '+1 xxx-166314'
+  IsError: bool,
+  Message: 'string',
+  ReturnObj: {
+    country: 'string',
+    phLengthMax: int,
+    phLengthMin: int,
+    phExample: 'string',
+    validNumber?: 'string'
+  }
 }
 ```
 ## API Reference
@@ -41,12 +52,14 @@ import { getCountryDataByCode } from '@zene/mobile-number-validator';
 #### getCountryDataByCode
 
 ```
-getCountryDataByCode(countryCode: number): NumberValidationData
+getCountryDataByCode({ countryCode: string|number, mobileNumber?: string,    }): NumberValidationData
 ```
 
 | Parameter   | Type     | Description                |
 | :--------   | :------- | :------------------------- |
-| `countryCode` | `number` | **Required**. The numeric country code for the desired country |
+| `countryCode` | `number or string` | **Required**. The numeric country code for the desired country |
+| `mobileNumber` | `string` | Mobile number that needs to be verify |
+| `internationalValidation` | `boolean` |  allows for an international dialing code to be in the number |
 
 #### NumberValidationData Interface
 
@@ -56,11 +69,10 @@ getCountryDataByCode(countryCode: number): NumberValidationData
     phLengthMax: number |null;
     phLengthMin: number | null;
     phExample?: string | number;
+    validNumber?: string | null;
 }
 
 ```
-
-
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
